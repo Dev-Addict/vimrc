@@ -55,6 +55,8 @@ call plug#begin(expand('~/.vim/plugged'))
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'posva/vim-vue'
   Plug 'leafOfTree/vim-vue-plugin'
+  Plug 'tpope/vim-markdown'
+  Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 
 call plug#end()
 
@@ -100,7 +102,7 @@ set novisualbell
 set mouse=a
 set title
 set titleold=Terminal
-set titlestring=Vim(%F)
+set titlestring=(Neo)Vim(%F)
 set background=dark
 set foldmethod=indent
 set foldnestmax=3
@@ -321,6 +323,16 @@ endif
   let g:vue_disable_pre_processors = 1
   let g:vim_vue_plugin_load_full_syntax = 1
 
+  " Markdown Preview
+  let g:mkdp_auto_start = 1
+  let g:mkdp_auto_close = 1
+  let g:mkdp_refresh_slow = 0
+  let g:mkdp_open_to_the_world = 0
+  let g:mkdp_echo_preview_url = 1
+  let g:mkdp_port = '5000'
+  let g:mkdp_page_title = '「${name}」 - Markdown Preview'
+  let g:mkdp_filetypes = ['markdown']
+
 " }}}
 
 " MAPPINGS --------------------------------------------------------------- {{{
@@ -401,6 +413,9 @@ endif
   au FileType rust nmap gs <Plug>(rust-def-split)
   au FileType rust nmap gx <Plug>(rust-def-vertical)
   au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+  " Markdown Preview
+  au FileType markdown nmap <leader>mp <Plug>MarkdownPreviewToggle
 
 " }}}
 

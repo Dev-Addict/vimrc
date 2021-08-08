@@ -130,14 +130,7 @@ set t_Co=256
 set guioptions=egmrti
 set laststatus=2
 set modeline
-set modelines
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-
-if exists($SHELL)
-  set shell=$SHELL
-else
-  set shell=/bin/sh
-endif
 
 if exists("*fugative#statusline")
   set statusline+=%{fugative#statusline()}
@@ -382,10 +375,6 @@ endif
   nmap <leader>9   <Plug>AirlineSelectTab9
   nmap <leader>1   <Plug>AirlineSelectTab0
 
-  " Vim Code FMT
-  nmap <F5>        :FormatCode<CR>
-  imap <F5>        :FormatCode<CR>
-
   " Vim Session
   nmap <leader>so  :OpenSession<CR>
   nmap <leader>ss  :SaveSession<CR>
@@ -414,3 +403,4 @@ endif
   au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " }}}
+

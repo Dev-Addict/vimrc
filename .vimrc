@@ -1,4 +1,5 @@
 " Got Some Help from vim bootstrap
+
 " CORE ------------------------------------------------------------------- {{{
 
 let g:alelinters = {}
@@ -99,6 +100,7 @@ set nocursorline
 set norelativenumber
 set noerrorbells
 set novisualbell
+set belloff=all
 set mouse=a
 set title
 set titleold=Terminal
@@ -166,9 +168,9 @@ endif
   let g:NERDTreeShowBookMarks = 1
   let g:nerdtree_tabs_focus_on_files = 1
 
-  " OneHalfLight Color Scheme
-  colorscheme onehalfdark
-  let g:airline_theme = 'onehalfdark'
+  " Dracula Color Scheme
+  packadd! dracula
+  colorscheme dracula
 
   " Vim Airline
   let g:airline#extensions#tabline#enabled = 1
@@ -338,84 +340,84 @@ endif
 " MAPPINGS --------------------------------------------------------------- {{{
 
   " Vim
-  nmap <C-q>       :qa<CR>
-  nmap <C-x>       :xa<CR>
-  nmap <C-S-q>     :qa!<CR>
-  nmap <C-s>       :w<CR>
-  nmap <leader>h   :<C-u>split<CR>
-  nmap <leader>v   :<C-u>vsplit<CR>
-  nmap <Tab>       gt
-  nmap <S-Tab>     gT
-  nmap YY          "+y<CR>
-  nmap <leader>p   "+gP<CR>
-  nmap XX          "+x<CR>
-  nmap <C-j>       <C-w>j
-  nmap <C-k>       <C-w>k
-  nmap <C-h>       <C-w>h
-  nmap <C-l>       <C-w>l
+  nmap <C-q>                             :qa<CR>
+  nmap <C-x>                             :xa<CR>
+  nmap <C-S-q>                           :qa!<CR>
+  nmap <C-S-x>                           :xa!<CR>
+  nmap <C-s>                             :w<CR>
+  nmap <leader>h                         :<C-u>split<CR>
+  nmap <leader>v                         :<C-u>vsplit<CR>
+  nmap <Tab>                             gt
+  nmap <S-Tab>                           gT
+  nmap YY                                "+y<CR>
+  nmap <leader>p                         "+gP<CR>
+  nmap XX                                "+x<CR>
+  nmap <C-j>                             <C-w>j
+  nmap <C-k>                             <C-w>k
+  nmap <C-h>                             <C-w>h
+  nmap <C-l>                             <C-w>l
 
   " Git
-  nmap <leader>ga  :Gwrite<CR>
-  nmap <leader>gc  :Git commit --verbose<CR>
-  nmap <leader>gsh :Gpush<CR>
-  nmap <leader>gll :Gpull<CR>
-  nmap <leader>gs  :Gstatus<CR>
-  nmap <leader>gb  :Gblame<CR>
-  nmap <leader>gd  :Gvdiff<CR>
-  nmap <leader>gr  :Gremove<CR>
+  nmap <leader>ga                        :Gwrite<CR>
+  nmap <leader>gc                        :Git commit --verbose<CR>
+  nmap <leader>gsh                       :Gpush<CR>
+  nmap <leader>gll                       :Gpull<CR>
+  nmap <leader>gs                        :Gstatus<CR>
+  nmap <leader>gb                        :Gblame<CR>
+  nmap <leader>gd                        :Gvdiff<CR>
+  nmap <leader>gr                        :Gremove<CR>
 
   " NERDTree
-  nmap <F3>        :NERDTreeToggle<cr>
-  nmap <F2>        :NERDTreeFind<cr>
+  nmap <F3>                              :NERDTreeToggle<cr>
+  nmap <F2>                              :NERDTreeFind<cr>
 
   " NERDCommenter
-  nmap <C-c>       :call nerdcommenter#Comment(0,"toggle")<CR>
-  vmap <C-c>       :call nerdcommenter#Comment(0,"toggle")<CR>
+  nmap <C-c>                             :call nerdcommenter#Comment(0,"toggle")<CR>
 
   " Airline
-  nmap <C-n>       :<Plug>AirlineSelectPrevTab
-  nmap <C-p>       :<Plug>AirlineSelectNextTab
-  nmap <C-d>       :Bclose<CR>
-  nmap <leader>1   <Plug>AirlineSelectTab1
-  nmap <leader>2   <Plug>AirlineSelectTab2
-  nmap <leader>3   <Plug>AirlineSelectTab3
-  nmap <leader>4   <Plug>AirlineSelectTab4
-  nmap <leader>5   <Plug>AirlineSelectTab5
-  nmap <leader>6   <Plug>AirlineSelectTab6
-  nmap <leader>7   <Plug>AirlineSelectTab7
-  nmap <leader>8   <Plug>AirlineSelectTab8
-  nmap <leader>9   <Plug>AirlineSelectTab9
-  nmap <leader>1   <Plug>AirlineSelectTab0
+  nmap <C-n>                             :<Plug>AirlineSelectPrevTab
+  nmap <C-p>                             :<Plug>AirlineSelectNextTab
+  nmap <C-d>                             :Bclose<CR>
+  nmap <leader>1                         <Plug>AirlineSelectTab1
+  nmap <leader>2                         <Plug>AirlineSelectTab2
+  nmap <leader>3                         <Plug>AirlineSelectTab3
+  nmap <leader>4                         <Plug>AirlineSelectTab4
+  nmap <leader>5                         <Plug>AirlineSelectTab5
+  nmap <leader>6                         <Plug>AirlineSelectTab6
+  nmap <leader>7                         <Plug>AirlineSelectTab7
+  nmap <leader>8                         <Plug>AirlineSelectTab8
+  nmap <leader>9                         <Plug>AirlineSelectTab9
+  nmap <leader>1                         <Plug>AirlineSelectTab0
 
   " Vim Session
-  nmap <leader>so  :OpenSession<CR>
-  nmap <leader>ss  :SaveSession<CR>
-  nmap <leader>sd  :DeleteSession<CR>
-  nmap <leader>sc  :CloseSession<CR>
+  nmap <leader>so                        :OpenSession<CR>
+  nmap <leader>ss                        :SaveSession<CR>
+  nmap <leader>sd                        :DeleteSession<CR>
+  nmap <leader>sc                        :CloseSession<CR>
 
   " PHP Actor
-  nmap <leader>u :call phpactor#UseAdd()<CR>
-  nmap <leader>mm :call phpactor#ContextMenu()<CR>
-  nmap <leader>nn :call phpactor#Navigate()<CR>
-  nmap <leader>oo :call phpactor#GotoDefinition()<CR>
-  nmap <leader>oh :call phpactor#GotoDefinitionHsplit()<CR>
-  nmap <leader>ov :call phpactor#GotoDefinitionVsplit()<CR>
-  nmap <leader>ot :call phpactor#GotoDefinitionTab()<CR>
-  nmap <leader>K :call phpactor#Hover()<CR>
-  nmap <leader>tt :call phpactor#Transform()<CR>
-  nmap <leader>cc :call phpactor#ClassNew()<CR>
-  nmap <silent><leader>ee :call phpactor#ExtractExpression(v:false)<CR>
-  vmap <silent><leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
-  vmap <silent><leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+  nmap <leader>u                         :call phpactor#UseAdd()<CR>
+  nmap <leader>mm                        :call phpactor#ContextMenu()<CR>
+  nmap <leader>nn                        :call phpactor#Navigate()<CR>
+  nmap <leader>oo                        :call phpactor#GotoDefinition()<CR>
+  nmap <leader>oh                        :call phpactor#GotoDefinitionHsplit()<CR>
+  nmap <leader>ov                        :call phpactor#GotoDefinitionVsplit()<CR>
+  nmap <leader>ot                        :call phpactor#GotoDefinitionTab()<CR>
+  nmap <leader>K                         :call phpactor#Hover()<CR>
+  nmap <leader>tt                        :call phpactor#Transform()<CR>
+  nmap <leader>cc                        :call phpactor#ClassNew()<CR>
+  nmap <silent><leader>ee                :call phpactor#ExtractExpression(v:false)<CR>
+  vmap <silent><leader>ee                :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+  vmap <silent><leader>em                :<C-U>call phpactor#ExtractMethod()<CR>
 
   " Vim Racer
-  au FileType rust nmap gd <Plug>(rust-def)
-  au FileType rust nmap gs <Plug>(rust-def-split)
-  au FileType rust nmap gx <Plug>(rust-def-vertical)
-  au FileType rust nmap <leader>gd <Plug>(rust-doc)
+  au FileType rust nmap gd               <Plug>(rust-def)
+  au FileType rust nmap gs               <Plug>(rust-def-split)
+  au FileType rust nmap gx               <Plug>(rust-def-vertical)
+  au FileType rust nmap <leader>gd       <Plug>(rust-doc)
 
   " Markdown Preview
-  au FileType markdown nmap <leader>mp <Plug>MarkdownPreviewToggle
+  au FileType markdown nmap <leader>mp   <Plug>MarkdownPreviewToggle
 
 " }}}
 
